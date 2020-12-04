@@ -5,8 +5,12 @@ $_SESSION["username"]="hoang";
 $_SESSION["userid"]= 1;
 ?>
 <?php include 'header1.php'; ?>
-<div class="container">
-  <div id="demo" class="carousel slide" data-ride="carousel">
+</head>
+<body>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-8">
+      <div id="demo" class="carousel slide" data-ride="carousel">
     <ul class="carousel-indicators">
       <li data-target="#demo" data-slide-to="0" class="active"></li>
       <li data-target="#demo" data-slide-to="1"></li>
@@ -39,6 +43,13 @@ $_SESSION["userid"]= 1;
       <span class="carousel-control-next-icon"></span>
     </a>
   </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="fb-page" data-href="https://www.facebook.com/facebook" data-tabs="timeline" data-width="400" data-height="200" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/facebook" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/facebook">Facebook</a></blockquote></div>
+      <div class="fb-page" data-href="https://www.facebook.com/facebook" data-tabs="timeline" data-width="400" data-height="200" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/facebook" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/facebook">Facebook</a></blockquote></div>
+    </div>
+  </div>
+  
 </div>
 <div class="container">
   <?php
@@ -59,7 +70,7 @@ $_SESSION["userid"]= 1;
   echo "<div class=\"row\">";
     while($row1 = mysqli_fetch_assoc($result1)) {
     echo "<div class=\"col-sm-6 mt-4 border\">";
-      echo "<a  href=\" http://localhost/test/khoahoc.php?id=". $row1["id"]. "\"><h5><strong>Name: " . $row1["TenKhoaHoc"].  "</strong></h5><br></a>";
+      echo "<a  href=\" khoahoc.php?id=". $row1["id"]. "\"><h5><strong> " .$row1["TenKhoaHoc"].  "</strong></h5><br></a>";
       $sql2 = "SELECT chude.id,chude.TenChuDe,chude.HocPhi,giaovien.TenGiaoVien,chude.DcHinhAnh FROM ((chude INNER JOIN giaovien ON giaovien.id=chude.IdGiaoVien) INNER JOIN khoahoc ON khoahoc.id= chude.IdKhoaHoc) where khoahoc.id=".$row1["id"];
       $result2 = mysqli_query($conn, $sql2);
       if (mysqli_num_rows($result2) > 0) {
@@ -67,12 +78,12 @@ $_SESSION["userid"]= 1;
       while($row2 = mysqli_fetch_assoc($result2)) {
       echo "<div class=\"row mt-2\">";
         echo "<div class=\"col-4\">";
-          echo "<a  href=\" http://localhost/test/monhoc.php?id=". $row2["id"]. "\"><img src=\"" . $row2["DcHinhAnh"] . "\" alt=\"icondfs\" style=\"width:100px;height:100px;\"></a>";
+          echo "<a  href=\" monhoc.php?id=". $row2["id"]. "\"><img src=\"" . $row2["DcHinhAnh"] . "\" alt=\"icondfs\" style=\"width:100px;height:100px;\"></a>";
         echo "</div>";
         echo "<div class=\"col\">";
-          echo "<a  href=\" http://localhost/test/monhoc.php?id=". $row2["id"]. "\">Chủ đề:  " . $row2["TenChuDe"] .  "<br></a>";
-          echo "giáo viên: " . $row2["TenGiaoVien"].  "<br>";
-          echo "học phí " . $row2["HocPhi"].  "<br>";
+          echo "<a  href=\" monhoc.php?id=". $row2["id"]. "\">Chủ đề:  " . $row2["TenChuDe"] .  "<br></a>";
+          echo "Giáo viên: " . $row2["TenGiaoVien"].  "<br>";
+          echo "Học phí: " . $row2["HocPhi"].  "<br>";
         echo "</div>";
       echo "</div>";
       }
@@ -92,4 +103,5 @@ $_SESSION["userid"]= 1;
   ?>
 </div>
 <<?php include 'footer.php'; ?>
+</body>
 </html>

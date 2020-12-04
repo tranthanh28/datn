@@ -41,7 +41,7 @@ $a=$_SESSION["username"];
   
   while($row2 = mysqli_fetch_assoc($result2)) {
   echo "<div>";
-    echo "<a style=\"font-size: 30px\" href=\" http://localhost/test/baigiang1.php?id=". $row2["id"]. "\">Tên Bài Giảng: " . $row2["TenBaiGiang"] .  "<br></a>";
+    echo "<a style=\"font-size: 30px\" href=\" baigiang1.php?id=". $row2["id"]. "\">Tên Bài Giảng: " . $row2["TenBaiGiang"] .  "<br></a>";
   echo "</div>";
   }
   

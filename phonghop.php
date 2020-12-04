@@ -1,14 +1,24 @@
+<?php
+// Start the session
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Bootstrap Example</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tao phong</title>
+    <!-- import the webpage's stylesheet -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link rel="stylesheet" href="/style.css" />
+    <!-- import the webpage's javascript file -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.20.0/dist/axios.min.js"></script>
+    <script src="https://cdn.stringee.com/sdk/web/2.2.1/stringee-web-sdk.min.js"></script>
     <style>
     #menu{
     display: none;
@@ -60,8 +70,8 @@
     <div class="jumbotron jumbotron-fluid p-3">
       <div class="row ">
         <div class="col-sm">
-        <a href="ht1.php"><img src="logo1.png" height="100px" title="học trực tuyến" alt="Học trực tuyến"></a><br>
-        <div class="fb-like" data-href="http://localhost/test/ht1.php" data-width="" data-layout="button_count" data-action="like" data-size="small" data-share="false"></div>
+          <a href="ht1.php"><img src="logo1.png" height="100px" title="học trực tuyến" alt="Học trực tuyến"></a><br>
+          <div class="fb-like" data-href="http://localhost/test/ht1.php" data-width="" data-layout="button_count" data-action="like" data-size="small" data-share="false"></div>
         </div>
         <form class="col-sm form-inline" action="/action_page.php">
           <input class="form-control mr-sm-2" type="text" placeholder="Search" onkeyup="showResult(this.value)">
@@ -98,26 +108,26 @@
           <a class="nav-link" href="ht1.php"><i class="fas fa-house-user"></i>Trang chủ</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="khoahoc.php?id=1">Lớp 10</a>
+          <a class="nav-link" href="http://localhost/test/khoahoc.php?id=1">Lớp 10</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="khoahoc.php?id=2">Lớp 11</a>
+          <a class="nav-link" href="http://localhost/test/khoahoc.php?id=2">Lớp 11</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="khoahoc.php?id=3">Lớp 12</a>
+          <a class="nav-link" href="http://localhost/test/khoahoc.php?id=3">Lớp 12</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="khoahoc.php?id=4">Tiếng Anh</a>
+          <a class="nav-link" href="http://localhost/test/khoahoc.php?id=4">Tiếng Anh</a>
         </li>
       </ul>
     </nav>
     <div id="mySidenav" class="sidenav">
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
       <a href="ht1.php"><i class="fas fa-house-user"></i>Trang chủ</a>
-      <a href="khoahoc.php?id=1">Lớp 10</a>
-      <a href="khoahoc.php?id=2">Lớp 11</a>
-      <a href="khoahoc.php?id=3">Lớp 12</a>
-      <a href="khoahoc.php?id=4">Tiếng Anh</a>
+      <a href="http://localhost/test/khoahoc.php?id=1">Lớp 10</a>
+      <a href="http://localhost/test/khoahoc.php?id=2">Lớp 11</a>
+      <a href="http://localhost/test/khoahoc.php?id=3">Lớp 12</a>
+      <a href="http://localhost/test/khoahoc.php?id=4">Tiếng Anh</a>
     </div>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark" >
       <span style="color:white; font-size:30px;cursor:pointer" id ="menu" onclick="openNav()"><i class=" fas fa-list-ul"> </i> Menu</span>
@@ -137,4 +147,28 @@
     </script>";
     }
     ?>
-    <!--kết thúc phần header-->
+    <div class="container" v-cloak id="app">
+      <div>
+        <button class="btn btn-primary" v-if="!room" @click="createRoom">
+        Tạo Meeting
+        </button>
+        <button class="btn btn-primary" v-if="!room" @click="joinWithId">
+        Join Meeting
+        </button>
+        <button class="btn btn-primary" v-if="room" @click="publish(true)">
+        Share Desktop
+        </button>
+      </div>
+      <div v-if="roomId" class="info">
+        Link phòng:
+        <a v-bind:href="roomUrl" target="_blank">{{roomUrl}}</a>
+      <p>Id phòng: <code>{{roomId}}</code> để share.</p>
+    </div>
+  </div>
+  <div class="container">
+    <div id="videos"></div>
+  </div>
+</body>
+<script src="api.js"></script>
+<script src="script.js"></script>
+</html>

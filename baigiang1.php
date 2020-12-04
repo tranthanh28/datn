@@ -53,7 +53,7 @@ if (mysqli_num_rows($result2) > 0) {
 // output data of each row
 while($row2 = mysqli_fetch_assoc($result2)) {
 echo "<div>";
-  echo "<a href=\" http://localhost/test/baigiang1.php?id=". $row2["id"]. "\">Name: " . $row2["TenBaiGiang"] .  "<br></a>";
+  echo "<a href=\" baigiang1.php?id=". $row2["id"]. "\">Name: " . $row2["TenBaiGiang"] .  "<br></a>";
 echo "</div>";
 }
 

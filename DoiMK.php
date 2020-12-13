@@ -4,7 +4,7 @@ session_start();
 ?>
 <?php
 if(isset($_SESSION["username"])==false){
-header('Location: http://localhost/test/dangnhap.php');
+header('Location: dangnhap.php');
 }
 else{
 include 'header1.php';

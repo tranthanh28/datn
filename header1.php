@@ -70,8 +70,8 @@
         </form>
         <div class="col-sm">
           <div id="dangnhap1">
-            <a href="#" class="btn btn-info" role="button">Đăng ký</a>
-            <a href="#" class="btn btn-primary d-sm-inline" role="button">Đăng nhập</a>
+            <a href="dangky.php" class="btn btn-info" role="button">Đăng ký</a>
+            <a href="dangnhap.php" class="btn btn-primary d-sm-inline" role="button">Đăng nhập</a>
           </div>
           <div class="dropdown" id="dangnhap2" style="display: none;">
             <span  class=" dropdown-toggle" style="cursor:pointer; font-size:20px;" data-toggle="dropdown"><i class=" fas fa-user-alt"></i>

@@ -22,10 +22,10 @@ include 'header1.php';
   while($row2 = mysqli_fetch_assoc($result2)) {
   echo "<div class=\"row mt-2\">";
     echo "<div class=\"col-4\">";
-      echo "<a  href=\"http://localhost/test/monhoc.php?id=" . $row2["id"] ."\"><img src=\"" . $row2["DcHinhAnh"] . "\" alt=\"icondfs\" style=\"width: 120px; height: 200\"></a>";
+      echo "<a  href=\"monhoc.php?id=" . $row2["id"] ."\"><img src=\"" . $row2["DcHinhAnh"] . "\" alt=\"icondfs\" style=\"width: 120px; height: 200\"></a>";
     echo "</div>";
     echo "<div class=\"col\">";
-      echo "<a  style=\"font-size: 30px;\" href=\"http://localhost/test/monhoc.php?id=" . $row2["id"] ."\">Chủ đề:  " . $row2["TenChuDe"] .  "<br></a>";
+      echo "<a  style=\"font-size: 30px;\" href=\"monhoc.php?id=" . $row2["id"] ."\">Chủ đề:  " . $row2["TenChuDe"] .  "<br></a>";
       echo "<div style=\"font-size: 30px;\">";
         echo "Giáo viên: " . $row2["TenGiaoVien"].  "<br>";
         echo "Học phí: " . $row2["HocPhi"].  "<br>";

@@ -1,8 +1,6 @@
 <?php
 // Start the session
 session_start();
-$_SESSION["username"]="hoang";
-$_SESSION["userid"]= 1;
 ?>
 <?php include 'header1.php'; ?>
 </head>
